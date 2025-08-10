@@ -12,6 +12,8 @@ run "test_ec2_instance_creation" {
   variables {
     instance_count = 2
     instance_type  = "t2.micro"
+    subnet_ids     = [module.setup.subnet_id]
+    security_group_ids = [module.setup.security_group_id]
   }
   
   # Test that instances are created
@@ -33,6 +35,8 @@ run "test_instance_count_variable" {
   variables {
     instance_count = 3
     instance_type  = "t2.small"
+    subnet_ids     = [module.setup.subnet_id]
+    security_group_ids = [module.setup.security_group_id]
   }
   
   # Test that variable changes affect instance count
