@@ -11,3 +11,4 @@ module "ec2_instances" {
   instance_count = 2
   instance_type  = "t2.micro"
 }
+```
