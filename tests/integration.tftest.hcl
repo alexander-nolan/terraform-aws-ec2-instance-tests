@@ -56,6 +56,7 @@ run "validate_ec2_instance_tags" {
     security_group_ids = ["sg-12345"]
     tags = {
       environment = "dev"
+      project     = "project-alpha"
     }
   }
 
