@@ -66,3 +66,24 @@ run "validate_ec2_instance_tags" {
     error_message = "All EC2 instances must have project tag"
   }
 }
+
+run "validate_ec2_instance_type" {
+  command = plan
+
+  variables {
+    instance_count = 2
+    instance_type  = "t3.small"
+    subnet_ids     = ["subnet-12345", "subnet-67890"]
+    security_group_ids = ["sg-12345"]
+    tags = {
+      project     = "project-alpha"
+      environment = "dev"
+    }
+  }
+
+  # Test that all instances have the correct instance type
+  assert {
+    condition     = alltrue([for instance in aws_instance.app : instance.instance_type == "t2.micro"])
+    error_message = "All EC2 instances must be t2.micro type"
+  }
+}
