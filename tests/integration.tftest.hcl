@@ -38,7 +38,7 @@ run "test_instance_count_variable" {
   
   variables {
     instance_count = 3
-    instance_type  = "t2.small"
+    instance_type  = "t2.micro"
     security_group_ids = [run.setup_infrastructure.security_group_id]
     subnet_ids = [run.setup_infrastructure.subnet_id]
     tags = {
