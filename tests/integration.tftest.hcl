@@ -47,7 +47,7 @@ run "test_instance_count_variable" {
 }
 
 run "validate_ec2_instance_tags" {
-  command = plan
+  command = apply
 
   variables {
     instance_count = 2
@@ -68,11 +68,11 @@ run "validate_ec2_instance_tags" {
 }
 
 run "validate_ec2_instance_type" {
-  command = plan
+  command = apply
 
   variables {
     instance_count = 2
-    instance_type  = "t3.small"
+    instance_type  = "t2.micro"
     subnet_ids     = ["subnet-12345", "subnet-67890"]
     security_group_ids = ["sg-12345"]
     tags = {
