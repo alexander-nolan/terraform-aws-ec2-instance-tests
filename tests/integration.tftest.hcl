@@ -14,6 +14,10 @@ run "test_ec2_instance_creation" {
     instance_type  = "t2.micro"
     security_group_ids = [run.setup_infrastructure.security_group_id]
     subnet_ids = [run.setup_infrastructure.subnet_id]
+    tags = {
+      environment = "dev"
+      project     = "project-alpha"
+    }
   }
   
   # Test that instances are created
@@ -37,6 +41,10 @@ run "test_instance_count_variable" {
     instance_type  = "t2.small"
     security_group_ids = [run.setup_infrastructure.security_group_id]
     subnet_ids = [run.setup_infrastructure.subnet_id]
+    tags = {
+      environment = "dev"
+      project     = "project-alpha"
+    }
   }
   
   # Test that variable changes affect instance count
